@@ -15,16 +15,22 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d81b60;
+      font-size: 32px; /* Adjusted font size */
     }
 
     .message {
-        font-style: italic;
-        font-size: 16px;
-        line-height: 1.8;
-        color: #444;
-        white-space: pre-line;
-      }
-      
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      white-space: pre-line;
+      margin-top: 20px;
+    }
 
     .envelope {
       width: 200px;
@@ -35,6 +41,7 @@
       cursor: pointer;
       animation: flyIn 2s ease forwards;
       top: -200px;
+      transition: top 0.5s ease;
     }
 
     .envelope::before,
@@ -72,9 +79,9 @@
       padding: 20px;
       border-radius: 8px;
       width: 300px;
-      text-align: center;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       animation: fadeIn 1s ease forwards;
+      text-align: center;
     }
 
     @keyframes fadeIn {
@@ -86,63 +93,78 @@
       display: block;
     }
 
-    h1 {
-      color: #d81b60;
-    }
-
-    .message {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #333;
-    }
-
-   /* Default styling for larger screens */
-.side-gif {
-    position: absolute;
-    top: 50%;
-    width: 180px; /* Larger GIFs */
-    transform: translateY(-50%);
-    display: none;
-    z-index: 1;
-}
-
-.side-gif.left {
-    left: 25%; /* Move the left GIF closer */
-}
-
-.side-gif.right {
-    right: 25%; /* Move the right GIF closer */
-}
-
-/* Media query for mobile devices */
-@media (max-width: 600px) {
     .side-gif {
-        width: 120px; /* Smaller GIFs on mobile */
+      position: absolute;
+      top: 50%;
+      width: 180px;
+      transform: translateY(-50%);
+      display: none;
+      z-index: 1;
     }
 
     .side-gif.left {
-        left: 15%; /* Adjust positioning for mobile */
+      left: 25%;
     }
 
     .side-gif.right {
-        right: 15%; /* Adjust positioning for mobile */
+      right: 25%;
     }
 
-    .letter {
-        width: 250px; /* Adjust letter width for mobile */
-        padding: 15px; /* Adjust padding for mobile */
-    }
-}
+    /* Media query for smaller devices */
+    @media (max-width: 768px) {
+      .side-gif {
+        width: 120px; /* Smaller GIF size on mobile */
+      }
 
-      #letter {
-        display: none;
-        /* your existing styling here */
+      .side-gif.left {
+        left: 15%;
       }
-      
-      #letter.show {
-        display: block;
+
+      .side-gif.right {
+        right: 15%;
       }
-      
+
+      h1 {
+        font-size: 24px; /* Adjust heading size on mobile */
+      }
+
+      .letter {
+        width: 80%; /* Make the letter container more flexible on mobile */
+        padding: 15px;
+      }
+
+      .message {
+        font-size: 14px; /* Adjust text size for readability */
+      }
+
+      .envelope {
+        width: 180px; /* Make envelope smaller on mobile */
+        height: 100px;
+      }
+    }
+
+    /* Media query for very small devices (phones) */
+    @media (max-width: 480px) {
+      .side-gif {
+        width: 100px; /* Further reduce GIF size for small screens */
+      }
+
+      .side-gif.left {
+        left: 10%;
+      }
+
+      .side-gif.right {
+        right: 10%;
+      }
+
+      h1 {
+        font-size: 20px; /* Further reduce heading size */
+      }
+
+      .letter {
+        width: 90%; /* Make letter container even more flexible */
+      }
+    }
   </style>
 </head>
 <body>
@@ -150,7 +172,7 @@
   <div class="envelope" id="envelope" onclick="openLetter()"></div>
 
   <div class="letter" id="letter">
-    <h1>I love you:( 💌</h1>
+    <h1>I'm Sorry 💌</h1>
     <p class="message">
         I said some words that I can't defend,
         they were too much, can't easily mend.
@@ -177,16 +199,13 @@
   <img src="sorry1.gif" id="leftGif" class="side-gif left" />
   <img src="sorry-sad.gif" id="rightGif" class="side-gif right" />
 
-    <script>
-        function openLetter() {
-            document.getElementById('envelope').style.display = 'none'; // Change this line to match the correct ID
-            document.getElementById('letter').classList.add('show');
-            document.getElementById('leftGif').style.display = 'block';
-            document.getElementById('rightGif').style.display = 'block';
-          }
-          
-        </script>
-        
+  <script>
+    function openLetter() {
+      document.getElementById('envelope').style.display = 'none';
+      document.getElementById('letter').classList.add('show');
+      document.getElementById('leftGif').style.display = 'block';
+      document.getElementById('rightGif').style.display = 'block';
+    }
   </script>
 
 </body>
